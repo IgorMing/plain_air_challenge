@@ -14,7 +14,9 @@ const Task = (props: TaskProps) => {
       <View style={styles.row}>
         <BouncyCheckbox
           fillColor={PRIMARY_COLOR}
-          onPress={(isChecked: boolean) => {}}
+          onPress={(isChecked: boolean) => {
+            console.log(isChecked);
+          }}
         />
         <Text style={styles.cardText}>{props.title}</Text>
       </View>

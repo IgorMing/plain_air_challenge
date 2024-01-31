@@ -7,4 +7,6 @@ export type Task = {
 export type UseTasksResponse = {
   tasks: Task[];
   addTask(text: string): void;
+  editTask(task: Task, index: number): void;
+  deleteTask(index: number): void;
 };

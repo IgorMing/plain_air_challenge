@@ -7,17 +7,15 @@ import useTasks from '../hook';
 import {TasksContext} from '../context';
 
 const HomeScreen: React.FC = () => {
-  const {tasks, addTask} = useTasks();
-
-  console.log('home -- tasks: ', tasks.length);
+  const data = useTasks();
 
   return (
-    <TasksContext.Provider value={{tasks, addTask}}>
+    <TasksContext.Provider value={data}>
       <View style={styles.container}>
-        <View style={{flex: 1}}>
+        <View style={styles.internalContainer}>
           <Text style={styles.title}>Your tasks</Text>
           <FlatList
-            data={tasks}
+            data={data.tasks}
             renderItem={({item}) => {
               return <Task title={item.text} />;
             }}
@@ -35,6 +33,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     padding: SPACING,
+  },
+  internalContainer: {
+    flex: 1,
   },
   title: {
     fontSize: 24,
