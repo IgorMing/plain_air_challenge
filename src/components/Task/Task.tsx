@@ -4,7 +4,11 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import Button from '../Button';
 import {PRIMARY_COLOR, SPACING} from '../../constants';
 
-const Task = () => {
+interface TaskProps {
+  title: string;
+}
+
+const Task = (props: TaskProps) => {
   return (
     <View style={[styles.row, styles.card]}>
       <View style={styles.row}>
@@ -12,10 +16,11 @@ const Task = () => {
           fillColor={PRIMARY_COLOR}
           onPress={(isChecked: boolean) => {}}
         />
-        <Text style={styles.cardText}>Task 1</Text>
+        <Text style={styles.cardText}>{props.title}</Text>
       </View>
       <View>
-        <Button variant="secondary" title="Remove item" />
+        <Button variant="secondary" title="Edit" />
+        <Button variant="secondary" title="Remove" />
       </View>
     </View>
   );

@@ -5,10 +5,9 @@ import {TasksContext} from '../../context';
 import Button from '../Button';
 
 const AddTask = () => {
-  const {tasks, addTask} = useContext(TasksContext);
+  const {addTask} = useContext(TasksContext);
   const [taskName, setTaskName] = useState('');
   const [error, setError] = useState<string | null>('');
-  console.log('addTask -- tasks: ', tasks.length);
 
   return (
     <View>
@@ -35,7 +34,10 @@ const AddTask = () => {
         onPress={() => {
           if (!taskName) {
             setError('The task name is required');
+            return;
           }
+
+          setTaskName('');
           addTask(taskName);
         }}
       />
@@ -53,6 +55,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: SPACING,
+    // paddingBottom: SPACING,
   },
   input: {
     height: 40,

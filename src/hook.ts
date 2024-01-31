@@ -7,7 +7,7 @@ function useTasks(): UseTasksResponse {
   return {
     tasks,
     addTask: (text: string) => {
-      setTasks([...tasks, {text, isCompleted: false, isDeleted: false}]);
+      setTasks([{text, isCompleted: false, isDeleted: false}, ...tasks]);
       console.log('chamou add task');
     },
   };

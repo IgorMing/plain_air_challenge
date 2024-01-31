@@ -10,7 +10,9 @@ const Button = ({variant = 'primary', title, ...rest}: CustomButtonProps) => {
   const isPrimary = useMemo(() => variant === 'primary', [variant]);
 
   return (
-    <TouchableOpacity style={isPrimary ? styles.container : {}} {...rest}>
+    <TouchableOpacity
+      style={isPrimary ? styles.container : styles.secondaryContainer}
+      {...rest}>
       <Text style={isPrimary ? styles.primaryText : styles.secondaryText}>
         {title}
       </Text>
@@ -24,6 +26,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: SPACING / 2,
     borderRadius: SPACING,
+  },
+  secondaryContainer: {
+    paddingVertical: SPACING / 4,
   },
   primaryText: {
     color: 'white',

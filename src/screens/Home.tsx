@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import AddTask from '../components/AddTask/AddTask';
 import Task from '../components/Task';
 import {SPACING} from '../constants';
@@ -14,10 +14,14 @@ const HomeScreen: React.FC = () => {
   return (
     <TasksContext.Provider value={{tasks, addTask}}>
       <View style={styles.container}>
-        <View>
+        <View style={{flex: 1}}>
           <Text style={styles.title}>Your tasks</Text>
-          <Task />
-          <Task />
+          <FlatList
+            data={tasks}
+            renderItem={({item}) => {
+              return <Task title={item.text} />;
+            }}
+          />
         </View>
 
         <AddTask />
