@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import Button from '../components/Button';
+import AddTask from '../components/AddTask/AddTask';
 import Task from '../components/Task';
 import {SPACING} from '../constants';
 
@@ -13,7 +13,7 @@ const HomeScreen: React.FC = () => {
         <Task />
       </View>
 
-      <Button text="Add" />
+      <AddTask />
     </View>
   );
 };
@@ -27,6 +27,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     paddingBottom: SPACING,
+  },
+  input: {
+    height: 40,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: SPACING / 2,
+    marginBottom: SPACING,
   },
 });
 
