@@ -3,18 +3,26 @@ import {StyleSheet, Text, View} from 'react-native';
 import AddTask from '../components/AddTask/AddTask';
 import Task from '../components/Task';
 import {SPACING} from '../constants';
+import useTasks from '../hook';
+import {TasksContext} from '../context';
 
 const HomeScreen: React.FC = () => {
-  return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.title}>Your tasks</Text>
-        <Task />
-        <Task />
-      </View>
+  const {tasks, addTask} = useTasks();
 
-      <AddTask />
-    </View>
+  console.log('home -- tasks: ', tasks.length);
+
+  return (
+    <TasksContext.Provider value={{tasks, addTask}}>
+      <View style={styles.container}>
+        <View>
+          <Text style={styles.title}>Your tasks</Text>
+          <Task />
+          <Task />
+        </View>
+
+        <AddTask />
+      </View>
+    </TasksContext.Provider>
   );
 };
 

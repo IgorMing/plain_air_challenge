@@ -1,19 +1,18 @@
 import React, {useMemo} from 'react';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {ButtonProps, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {PRIMARY_COLOR, SPACING} from '../../constants';
 
-type ButtonProps = {
+interface CustomButtonProps extends ButtonProps {
   variant?: 'primary' | 'secondary';
-  text: string;
-};
+}
 
-const Button = ({variant = 'primary', text}: ButtonProps) => {
+const Button = ({variant = 'primary', title, ...rest}: CustomButtonProps) => {
   const isPrimary = useMemo(() => variant === 'primary', [variant]);
 
   return (
-    <TouchableOpacity style={isPrimary ? styles.container : {}}>
+    <TouchableOpacity style={isPrimary ? styles.container : {}} {...rest}>
       <Text style={isPrimary ? styles.primaryText : styles.secondaryText}>
-        {text}
+        {title}
       </Text>
     </TouchableOpacity>
   );

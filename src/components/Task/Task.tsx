@@ -15,7 +15,7 @@ const Task = () => {
         <Text style={styles.cardText}>Task 1</Text>
       </View>
       <View>
-        <Button variant="secondary" text="Remove item" />
+        <Button variant="secondary" title="Remove item" />
       </View>
     </View>
   );
