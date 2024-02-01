@@ -1,8 +1,9 @@
 ## Plein Air Challenge
 
 This was made by using expo!
+
 It was started by using a bare React Native project, but I started having issues for installing Async Storage. Mismatching ruby version in my local environment, and stuff like that.
-For that reason, I decided to push it over an expo implementation _(which easily adds Async Storage in its configuration by default)_
+For that reason, I decided to push it over to an expo implementation _(which easily adds Async Storage in its configuration by default)_
 
 ### UI / App Running
 
