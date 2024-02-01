@@ -7,6 +7,7 @@ import {PRIMARY_COLOR, SPACING} from '../../constants';
 interface TaskProps {
   title: string;
   onEdit(): void;
+  onDelete(): void;
 }
 
 const Task = (props: TaskProps) => {
@@ -23,7 +24,7 @@ const Task = (props: TaskProps) => {
       </View>
       <View>
         <Button variant="secondary" title="Edit" onPress={props.onEdit} />
-        <Button variant="secondary" title="Remove" />
+        <Button variant="secondary" title="Remove" onPress={props.onDelete} />
       </View>
     </View>
   );

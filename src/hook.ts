@@ -5,7 +5,7 @@ export function useTasks(): UseTasksResponse {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   return {
-    tasks,
+    tasks: tasks.filter(task => task.isDeleted !== true),
     addTask: text => {
       setTasks([{text, isCompleted: false, isDeleted: false}, ...tasks]);
     },
@@ -15,8 +15,14 @@ export function useTasks(): UseTasksResponse {
       setTasks(instance);
     },
     deleteTask: index => {
+      // the code below would be for hard deletion
+
+      // const instance = [...tasks];
+      // instance.splice(index, 1);
+      // setTasks(instance);
+
       const instance = [...tasks];
-      instance.splice(index, 1);
+      instance[index].isDeleted = true;
       setTasks(instance);
     },
   };

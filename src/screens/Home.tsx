@@ -1,10 +1,10 @@
 import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import AddTask from '../components/AddTask/AddTask';
 import Task from '../components/Task';
 import {SPACING} from '../constants';
 import {EditModeContext, TasksContext} from '../context';
 import {useEditingItem, useTasks} from '../hook';
+import AddTask from '../components/AddTask';
 
 const HomeScreen: React.FC = () => {
   const tasksData = useTasks();
@@ -24,6 +24,9 @@ const HomeScreen: React.FC = () => {
                     title={item.text}
                     onEdit={() => {
                       editingItem.setIndex(index);
+                    }}
+                    onDelete={() => {
+                      tasksData.deleteTask(index);
                     }}
                   />
                 );
