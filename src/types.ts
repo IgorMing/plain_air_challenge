@@ -1,7 +1,7 @@
 export type Task = {
   text: string;
   isCompleted: boolean;
-  isDeleted: boolean; // just an option for soft deletion
+  // isDeleted: boolean; // necessary attribute for soft deletion
 };
 
 export type UseTasksResponse = {
@@ -16,5 +16,5 @@ type IndexType = number | null;
 export type EditModeResponse = {
   index: IndexType;
   setIndex(value: IndexType): void;
-  mode: 'add' | 'edit';
+  mode: "add" | "edit";
 };
