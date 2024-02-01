@@ -1,10 +1,10 @@
-import React from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
-import Task from '../components/Task';
-import {SPACING} from '../constants';
-import {EditModeContext, TasksContext} from '../context';
-import {useEditingItem, useTasks} from '../hook';
-import AddTask from '../components/AddTask';
+import React from "react";
+import { FlatList, StyleSheet, Text, View } from "react-native";
+import Task from "../components/Task";
+import { SPACING } from "../constants";
+import { EditModeContext, TasksContext } from "../context";
+import { useEditingItem, useTasks } from "../hook";
+import AddTask from "../components/AddTask";
 
 const HomeScreen: React.FC = () => {
   const tasksData = useTasks();
@@ -18,16 +18,20 @@ const HomeScreen: React.FC = () => {
             <Text style={styles.title}>Your tasks</Text>
             <FlatList
               data={tasksData.tasks}
-              renderItem={({item, index}) => {
+              renderItem={({ item, index }) => {
                 return (
                   <Task
                     title={item.text}
+                    isChecked={item.isCompleted}
                     onEdit={() => {
                       editingItem.setIndex(index);
                     }}
                     onDelete={() => {
                       tasksData.deleteTask(index);
                     }}
+                    onToggleComplete={(isCompleted) =>
+                      tasksData.completeTask(isCompleted, index)
+                    }
                   />
                 );
               }}
@@ -44,7 +48,7 @@ const HomeScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     padding: SPACING,
   },
   internalContainer: {

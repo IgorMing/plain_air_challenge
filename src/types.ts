@@ -8,6 +8,7 @@ export type UseTasksResponse = {
   tasks: Task[];
   addTask(text: string): void;
   editTask(task: Task, index: number): void;
+  completeTask(isCompleted: boolean, index: number): void;
   deleteTask(index: number): void;
 };
 

@@ -37,6 +37,11 @@ export function useTasks(): UseTasksResponse {
       instance[index] = task;
       setTasks(instance);
     },
+    completeTask: (isCompleted = true, index) => {
+      const instance = [...tasks];
+      instance[index].isCompleted = isCompleted;
+      setTasks(instance);
+    },
     deleteTask: (index) => {
       const instance = [...tasks];
       instance.splice(index, 1);
