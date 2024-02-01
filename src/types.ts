@@ -10,3 +10,11 @@ export type UseTasksResponse = {
   editTask(task: Task, index: number): void;
   deleteTask(index: number): void;
 };
+
+type IndexType = number | null;
+
+export type EditModeResponse = {
+  index: IndexType;
+  setIndex(value: IndexType): void;
+  mode: 'add' | 'edit';
+};

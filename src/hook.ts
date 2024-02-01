@@ -1,7 +1,7 @@
 import {useState} from 'react';
-import {Task, UseTasksResponse} from './types';
+import {EditModeResponse, Task, UseTasksResponse} from './types';
 
-function useTasks(): UseTasksResponse {
+export function useTasks(): UseTasksResponse {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   return {
@@ -22,4 +22,12 @@ function useTasks(): UseTasksResponse {
   };
 }
 
-export default useTasks;
+export function useEditingItem(): EditModeResponse {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  return {
+    mode: selectedIndex === null ? 'add' : 'edit',
+    index: selectedIndex,
+    setIndex: setSelectedIndex,
+  };
+}

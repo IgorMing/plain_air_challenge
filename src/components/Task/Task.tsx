@@ -6,6 +6,7 @@ import {PRIMARY_COLOR, SPACING} from '../../constants';
 
 interface TaskProps {
   title: string;
+  onEdit(): void;
 }
 
 const Task = (props: TaskProps) => {
@@ -21,7 +22,7 @@ const Task = (props: TaskProps) => {
         <Text style={styles.cardText}>{props.title}</Text>
       </View>
       <View>
-        <Button variant="secondary" title="Edit" />
+        <Button variant="secondary" title="Edit" onPress={props.onEdit} />
         <Button variant="secondary" title="Remove" />
       </View>
     </View>

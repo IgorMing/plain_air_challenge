@@ -3,27 +3,37 @@ import {FlatList, StyleSheet, Text, View} from 'react-native';
 import AddTask from '../components/AddTask/AddTask';
 import Task from '../components/Task';
 import {SPACING} from '../constants';
-import useTasks from '../hook';
-import {TasksContext} from '../context';
+import {EditModeContext, TasksContext} from '../context';
+import {useEditingItem, useTasks} from '../hook';
 
 const HomeScreen: React.FC = () => {
-  const data = useTasks();
+  const tasksData = useTasks();
+  const editingItem = useEditingItem();
 
   return (
-    <TasksContext.Provider value={data}>
-      <View style={styles.container}>
-        <View style={styles.internalContainer}>
-          <Text style={styles.title}>Your tasks</Text>
-          <FlatList
-            data={data.tasks}
-            renderItem={({item}) => {
-              return <Task title={item.text} />;
-            }}
-          />
-        </View>
+    <TasksContext.Provider value={tasksData}>
+      <EditModeContext.Provider value={editingItem}>
+        <View style={styles.container}>
+          <View style={styles.internalContainer}>
+            <Text style={styles.title}>Your tasks</Text>
+            <FlatList
+              data={tasksData.tasks}
+              renderItem={({item, index}) => {
+                return (
+                  <Task
+                    title={item.text}
+                    onEdit={() => {
+                      editingItem.setIndex(index);
+                    }}
+                  />
+                );
+              }}
+            />
+          </View>
 
-        <AddTask />
-      </View>
+          <AddTask />
+        </View>
+      </EditModeContext.Provider>
     </TasksContext.Provider>
   );
 };
