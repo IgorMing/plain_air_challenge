@@ -4,6 +4,10 @@ This was made by using expo!
 It was started by using a bare React Native project, but I started having issues for installing Async Storage. Mismatching ruby version in my local environment, and stuff like that.
 For that reason, I decided to push it over an expo implementation _(which easily adds Async Storage in its configuration by default)_
 
+### UI / App Running
+
+https://github.com/IgorMing/plain_air_challenge/assets/8928206/240ef632-980f-4e36-b39e-81a5ff608eca
+
 ### State Manager
 
 It was made simple, via custom hooks + Context API.
