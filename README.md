@@ -6,7 +6,7 @@ For that reason, I decided to push it over an expo implementation _(which easily
 
 ### UI / App Running
 
-https://github.com/IgorMing/plain_air_challenge/assets/8928206/240ef632-980f-4e36-b39e-81a5ff608eca
+https://github.com/IgorMing/plein_air_challenge/assets/8928206/99514642-94b2-44bc-ab95-07ffe5bb2d7d
 
 ### State Manager
 
